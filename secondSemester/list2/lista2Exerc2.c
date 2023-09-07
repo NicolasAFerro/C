@@ -37,27 +37,29 @@ int main(){
   int matrixLine;
   float Sum=0, average=0;
   int col;
-
-  for(int lin =0; lin<12; lin++)
-    for(int col=0; col<12;col++) 
-      scanf("%f", &matNum[lin][col]); 
-  printf("\nenter the matrix line");
+  //printf("\nenter the matrix line");
   scanf("%i", &matrixLine); 
-  printf("\nEnter the operation S:sum, M: average");
-  scanf(" %c", &operation); 
-  if(operation=='s'||operation=='S'){ 
-    for(int col=0;col<12;col++) 
-      Sum=Sum+matNum[matrixLine][col];
-    printf("\nsum: %.2f", Sum);
+  if(matrixLine<0||matrixLine>11){ 
   }
   else{  
-    for(col=0;col<12;col++) 
-      average=average+matNum[matrixLine][col]; 
-    average=average/col;
-    printf("\navarege: %.2f", average);
+      //printf("\nEnter the operation S:sum, M: average");
+    scanf(" %c", &operation); 
+    for(int lin =0; lin<12; lin++)
+      for(int col=0; col<12;col++) 
+        scanf("%f", &matNum[lin][col]);   
+    
+    if(operation=='S'){ 
+      for(int col=0;col<12;col++) 
+        Sum=Sum+matNum[matrixLine][col];
+      printf("%.1f", Sum);
+    }
+    else
+      if(operation=='M'){  
+        for(col=0;col<12;col++) 
+          average=average+matNum[matrixLine][col]; 
+        average=average/12;
+        printf("%.1f", average);
+      };
   };
-
-
-
   return 0;
 }
