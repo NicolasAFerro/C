@@ -18,15 +18,8 @@ int main (){
         if (palavra[0]=='U'&&palavra[1]=='R')
           printf("URI "); 
         else 
-          printf("%s ", palavra);
-      
-      
-      
+          printf("%s ", palavra);    
     }
   }
-  
-    
-  
-  printf("\n");
   return 0;
 }
