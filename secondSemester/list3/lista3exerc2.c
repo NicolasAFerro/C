@@ -18,7 +18,7 @@ int main (){
             cont++;
     };
 
-    printf("\qtd[%c]: %i", letra, cont);
+    printf("\nqtd[%c]: %i", letra, cont);
 
 
 
