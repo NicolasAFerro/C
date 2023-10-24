@@ -2,24 +2,24 @@
 #include <string.h>
 
 
-char* funcao (char frase[], char fraseAuxiliar[]){
+/* char* funcao (char frase[], char fraseAuxiliar[]){
   
         for (int i=0;i<strlen(frase);i++){ 
             frase[i]=((frase[i]=='A'|| frase[i]=='a' || frase[i]=='e' ||frase[i]=='E' || frase[i]=='I' || frase[i]=='i' ||frase[i]=='O' || frase[i]=='o' || frase[i]=='U' || frase[i]=='u' || frase[i]==' ') ?frase[i]:'#');
         }
         /* printf("%s\n", frase); */ 
-        char *p=&frase[strlen(frase)];
+        /* char *p=&frase[strlen(frase)];
         int j;
         for(j=0;j<strlen(frase);j++) {
           --p;
           fraseAuxiliar[j]=*p;          
         }
         fraseAuxiliar[j]='\0';
-        strcpy(frase,fraseAuxiliar);
+        strcpy(frase,fraseAuxiliar); */
         /* printf("%s\n", fraseAuxiliar);
-        printf("%s", frase);  */
+        printf("%s", frase);  
         return(frase);
-}
+} */
 int main(){
     // questão 1
     /*float valores[10], *p;
@@ -69,11 +69,11 @@ int main(){
     //QUESTÃO 5
  
 
-    char frase[30];
+/*     char frase[30];
     char fraseAuxiliar[30];
     printf("insira a frase\n");
     gets(frase);
-    printf("%s", funcao(frase, fraseAuxiliar));
+    printf("%s", funcao(frase, fraseAuxiliar)); */
  
   
 
