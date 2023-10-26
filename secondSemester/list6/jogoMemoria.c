@@ -82,14 +82,3 @@ int main(){
 
 
 
-
-
-
-
-    
-    /* // Gere e exiba o número para o jogador 2
-    numJogador2 = rand() % 9;
-    printf("Jogador 2: Número Aleatório - %d\n", num_jogador2);
-    sleep(5); 
-    num2=57-'numJogador2';
-    verdadeiroFalso(num1,num2); */
