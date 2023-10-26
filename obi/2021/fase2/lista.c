@@ -3,7 +3,7 @@
 #include <string.h>
 
 
-
+///////////////########################
 int main(){ 
   int j ;
   int cont;
