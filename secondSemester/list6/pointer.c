@@ -31,8 +31,8 @@ int main(){
     printf("%x %p\n", p - valores, p);
     p = &valores[6];
     printf("%x %p\n", p - valores, p);*/
-    /*(*p)=15;
-    printf("%p", p);*/
+    ///(*p)=15;
+    //printf("%p", p);
  
     //A=Significa o endereço de memória da primeira posição do vetor;
     //B= o conteudo da variavel que p aponta será 15;
