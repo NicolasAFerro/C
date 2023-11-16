@@ -20,6 +20,15 @@
         printf("%s", frase);  
         return(frase);
 } */
+
+char* funcao(char *frase, char letra){ 
+    int i; 
+    for(int i=0;frase[i]!='\0'; i++) 
+        if(frase[i]==letra)
+            return &frase[i]; 
+    
+    return NULL;
+}
 int main(){
     // questão 1
     /*float valores[10], *p;
@@ -74,8 +83,37 @@ int main(){
     printf("insira a frase\n");
     gets(frase);
     printf("%s", funcao(frase, fraseAuxiliar)); */
- 
-  
+
+
+    //printf("\n-----------------------------------------------------------------------------------------")
+    //MATERIAIS ENVIADOS: 
+    /* vponteiro=&vnumero - & pode-se ler como: 
+    “o endereço de memória de”.  */
+
+  /*   int vetor[10];
+    int *ponteiro, i;
+    ponteiro = &i;
+    as operações a seguir são inválidas 
+    vetor = vetor + 2; 
+    vetor++; 
+    vetor = ponteiro; 
+     as operações abaixo são válidas 
+    ponteiro = vetor; 
+    ponteiro = vetor+2; */ 
+
+   /*  M + i é equivalente a &M[i], portanto
+    *(M + i) é equivalente a M[i] */
+    
+    /* Se x é um inteiro e ptr um ponteiro para inteiros e ambos
+    contêm no seu interior o valor 100. Então x+1 e ptr+! apresentarão o 
+    numero 101. 
+    Falso, pois os ponteiros, quando se deslocam, movem-se sempre o numero 
+    fr bytes do tipo que apontam. Então x+1=101 e ptr+1=102; */
+    
+    char frase[100], letra; 
+    printf("escreva a frase: "); gets(frase); 
+    printf("\n escreva a letra: "); scanf("%c", &letra); 
+    puts(funcao(frase,letra));
 
     return 0;
 

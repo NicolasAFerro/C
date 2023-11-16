@@ -10,7 +10,6 @@ int Soma (int *matrizRetorno){
     soma2[i]=soma1[i]+soma2[i-1];
   }
   return soma2[10];
-  
 }
 int transformaInteiro(char *isbn){ 
   int matrizRetorno[12],i;
