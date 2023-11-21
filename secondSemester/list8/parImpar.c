@@ -1,7 +1,7 @@
 #include <stdio.h> 
 
 
-void bubbleSort(int tamanhoVetor, int *vetor){ 
+/* void bubbleSort(int tamanhoVetor, int *vetor){ 
   for(int i=tamanhoVetor-1;i>=1;i--){
     int trocaAconteceu=0; 
     for(int j=0; j<i;j++){ 
@@ -31,7 +31,7 @@ void selectionSort(int repeticoes, int *vetor){
     vetor[i] = aux;
   }
   
-}
+} */
 void insertionSort(int repeticoes, int *vetor){ 
   int j=1;
   while (j<repeticoes){
@@ -62,22 +62,22 @@ void exibirSequencia(int repeticoes, int *vetor){
 
 int main(){ 
   int repeticoes, vetor[200], metodo;
-  printf("\ninsira o numero de repeticoes: "); 
+  //printf("\ninsira o numero de repeticoes: "); 
   scanf("%i", &repeticoes); 
   for(int i=0;i<repeticoes;i++){ 
     printf("\nvetor[%i]: ", i+1); 
     scanf("%i", &vetor[i]); 
   }
-  printf("\nQual metodo utilizar: "); 
+/*   printf("\nQual metodo utilizar: "); 
   printf("\n[1]Bubble Sort"); 
   printf("\n[2]Selection Sort");
-  printf("\n[3]Insertion Sort");
+  printf("\n[3]Insertion Sort"); */
   scanf("\n%i", &metodo); 
-  if(metodo==1) 
+ /*  if(metodo==1) 
     bubbleSort(repeticoes, vetor); 
   else if(metodo==2) 
     selectionSort(repeticoes, vetor); 
-  else
+  else */
     insertionSort(repeticoes, vetor);
   exibirSequencia(repeticoes, vetor);
   return 0;
