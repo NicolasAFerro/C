@@ -16,11 +16,18 @@ typedef struct Animal {
 } Animal;
 
 
+typedef struct Consultorio{
+
+    Cliente *cliente_em_Atendimento;
+    float valorConsulta; 
+
+} Consultorio;
+
+Consultorio clinica;
 
 
 Cliente *cabecaFilaConsulta; 
 Cliente *caudaFilaConsulta;
-
 
 
 Cliente *cabecaListaClientes = NULL;
@@ -289,19 +296,27 @@ void InserirFilaConsulta(char *nomeCliente){
 }
 
 
+
 void ConsumirFilaConsulta(){
     if(cabecaFilaConsulta==NULL)
         printf("fila vazia\n"); 
     else{ 
         if(caudaFilaConsulta==cabecaFilaConsulta){ 
-            printf("fila com somente um elemento"); 
+            printf("fila com somente um elemento\n"); 
+            clinica.cliente_em_Atendimento=cabecaFilaConsulta;
+            printf("Cliente no consultorio: %s\n", clinica.cliente_em_Atendimento->nome); 
+            ListarAnimaisCadaCliente(cabecaFilaConsulta->nome);
             cabecaFilaConsulta=NULL; 
             caudaFilaConsulta=NULL;
             ExibirListaConsulta();
         }
-        else{ 
+        else{  
+            clinica.cliente_em_Atendimento=cabecaFilaConsulta; 
+            printf("Cliente no consultorio: %s\n", clinica.cliente_em_Atendimento->nome); 
+            ListarAnimaisCadaCliente(cabecaFilaConsulta->nome);   
             cabecaFilaConsulta=cabecaFilaConsulta->proximoCliente; 
             ExibirListaConsulta();
+            
         }
     } 
 
