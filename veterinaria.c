@@ -23,7 +23,7 @@ typedef struct Consultorio{
 
 } Consultorio;
 
-Consultorio clinica;
+Consultorio clinica[3];
 
 
 Cliente *cabecaFilaConsulta; 
@@ -45,6 +45,7 @@ void menu() {
     printf("6 - Remover Animal\n");
     printf("7 - Inserir Fila Consulta\n");
     printf("8 - Consumir Fila Consulta\n");
+    printf("9 - Exibir Clinica\n");
     printf("0 - Sair\n");
 }
 
@@ -295,6 +296,16 @@ void InserirFilaConsulta(char *nomeCliente){
 
 }
 
+void ExibirClinica(){ 
+    for(int i=0; i<3; i++){ 
+        if (clinica[i].cliente_em_Atendimento != NULL) {
+            printf("Cliente no consultorio[%i]: %s\n", i, clinica[i].cliente_em_Atendimento->nome); 
+            ListarAnimaisCadaCliente(clinica[i].cliente_em_Atendimento->nome); 
+        } else {
+            printf("Consultorio[%i] está vazio\n", i);
+        }
+    }
+}
 
 
 void ConsumirFilaConsulta(){
@@ -302,18 +313,30 @@ void ConsumirFilaConsulta(){
         printf("fila vazia\n"); 
     else{ 
         if(caudaFilaConsulta==cabecaFilaConsulta){ 
-            printf("fila com somente um elemento\n"); 
-            clinica.cliente_em_Atendimento=cabecaFilaConsulta;
-            printf("Cliente no consultorio: %s\n", clinica.cliente_em_Atendimento->nome); 
-            ListarAnimaisCadaCliente(cabecaFilaConsulta->nome);
+            printf("fila com somente um elemento\n");
+            for(int i=0;i<3;i++){
+                if(clinica[i].cliente_em_Atendimento==NULL){ 
+                    clinica[i].cliente_em_Atendimento=cabecaFilaConsulta;
+                    printf("Cliente no consultorio: %s\n", clinica[i].cliente_em_Atendimento->nome);                  
+                    ListarAnimaisCadaCliente(cabecaFilaConsulta->nome); 
+                    break;
+                }                
+
+            }             
             cabecaFilaConsulta=NULL; 
             caudaFilaConsulta=NULL;
             ExibirListaConsulta();
         }
         else{  
-            clinica.cliente_em_Atendimento=cabecaFilaConsulta; 
-            printf("Cliente no consultorio: %s\n", clinica.cliente_em_Atendimento->nome); 
-            ListarAnimaisCadaCliente(cabecaFilaConsulta->nome);   
+            for(int i=0;i<3;i++){
+                if(clinica[i].cliente_em_Atendimento==NULL){ 
+                    clinica[i].cliente_em_Atendimento=cabecaFilaConsulta;
+                    printf("Cliente no consultorio: %s\n", clinica[i].cliente_em_Atendimento->nome);                  
+                    ListarAnimaisCadaCliente(cabecaFilaConsulta->nome); 
+                    break;
+                }
+            }                
+
             cabecaFilaConsulta=cabecaFilaConsulta->proximoCliente; 
             ExibirListaConsulta();
             
@@ -376,6 +399,9 @@ int main() {
                 break;
             case 8: 
                 ConsumirFilaConsulta(); 
+                break;
+            case 9: 
+                ExibirClinica();
                 break;           
         }
     } while(opcao != 0);
