@@ -27,7 +27,7 @@ Consultorio clinica[3];
 
 
 Cliente *cabecaFilaConsulta; 
-Cliente *caudaFilaConsulta;
+Cliente *caudaFilaConsulta; 
 
 
 Cliente *cabecaListaClientes = NULL;
@@ -37,15 +37,16 @@ Animal *caudaListaAnimais = NULL;
 
 void menu() {
     printf("Veterinaria de Ferro SA\n");
-    printf("1 - Cadastrar Cliente\n");
-    printf("2 - Listar Clientes\n");
-    printf("3 - Remover Cliente\n");
-    printf("4 - Cadastrar Animal\n"); 
-    printf("5 - Listar Animais\n"); 
-    printf("6 - Remover Animal\n");
-    printf("7 - Inserir Fila Consulta\n");
-    printf("8 - Consumir Fila Consulta\n");
-    printf("9 - Exibir Clinica\n");
+    printf("1  - Cadastrar Cliente\n");
+    printf("2  - Listar Clientes\n");
+    printf("3  - Remover Cliente\n");
+    printf("4  - Cadastrar Animal\n"); 
+    printf("5  - Listar Animais\n"); 
+    printf("6  - Remover Animal\n");
+    printf("7  - Inserir Fila Consulta\n");
+    printf("8  - Consumir Fila Consulta\n");
+    printf("9  - Exibir Clinica\n");
+    printf("10 - Finalizar Consulta\n");
     printf("0 - Sair\n");
 }
 
@@ -307,7 +308,16 @@ void ExibirClinica(){
     }
 }
 
+void finalizarConsulta(){
+    int opcao;  
+    ExibirClinica();
+    printf("qual consultorio que deseja finalizar a consulta?\n");     
+    scanf("%i", &opcao);
+    //printf("Insira o valor da consulta: "); 
+    //scanf("%f", clinica[opcao].valorConsulta); 
+    clinica[opcao].cliente_em_Atendimento=NULL;
 
+}
 void ConsumirFilaConsulta(){
     if(cabecaFilaConsulta==NULL)
         printf("fila vazia\n"); 
@@ -402,7 +412,13 @@ int main() {
                 break;
             case 9: 
                 ExibirClinica();
-                break;           
+                break; 
+            case 10: 
+                finalizarConsulta();
+                break;  
+            case 11: 
+                ExibirListaConsulta(); 
+                break;        
         }
     } while(opcao != 0);
 
