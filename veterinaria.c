@@ -15,13 +15,11 @@ typedef struct Animal {
     struct Animal *proximoAnimal;
 } Animal;
 
-typedef struct Consultorio{ 
-    struct Cliente *ClienteNoConsultorio; 
-    float valorConsulta;
 
-}
 
-Consultorio ClinicaVeterinaria [5];
+
+Cliente *cabecaFilaConsulta; 
+Cliente *caudaFilaConsulta;
 
 
 
@@ -38,6 +36,8 @@ void menu() {
     printf("4 - Cadastrar Animal\n"); 
     printf("5 - Listar Animais\n"); 
     printf("6 - Remover Animal\n");
+    printf("7 - Inserir Fila Consulta\n");
+    printf("8 - Consumir Fila Consulta\n");
     printf("0 - Sair\n");
 }
 
@@ -254,6 +254,71 @@ void removerCliente() {
     printf("\nCliente não encontrado\n");
 }
 
+
+void InserirFilaConsulta(char *nomeCliente){ 
+    if (cabecaListaClientes == NULL) { 
+        printf("Lista vazia\n"); 
+        return ;
+    } else {
+        Cliente *aux = cabecaListaClientes;
+        while (aux != NULL) {
+            if(strcmp(aux->nome, nomeCliente) == 0) {
+                Cliente *clienteFila=(Cliente*)malloc(sizeof(Cliente)); 
+                //clienteFila->nome=nomeCliente;
+                strcpy(clienteFila->nome,nomeCliente);
+                clienteFila->clienteAnterior=NULL; 
+                clienteFila->proximoCliente=NULL; 
+                if (cabecaFilaConsulta == NULL) { 
+                    cabecaFilaConsulta = clienteFila;
+                    caudaFilaConsulta = clienteFila; 
+                } else { 
+                    caudaFilaConsulta->proximoCliente = clienteFila; 
+                    caudaFilaConsulta = clienteFila;        
+                } 
+                printf("cliente inserido na fila de consulta\n");
+                ExibirListaConsulta();
+                return;
+            }      
+            aux = aux->proximoCliente;
+        }
+        printf("Cliente não encontrado\n");
+        return ;
+    };
+    
+
+}
+
+
+void ConsumirFilaConsulta(){
+    if(cabecaFilaConsulta==NULL)
+        printf("fila vazia\n"); 
+    else{ 
+        if(caudaFilaConsulta==cabecaFilaConsulta){ 
+            printf("fila com somente um elemento"); 
+            cabecaFilaConsulta=NULL; 
+            caudaFilaConsulta=NULL;
+            ExibirListaConsulta();
+        }
+        else{ 
+            cabecaFilaConsulta=cabecaFilaConsulta->proximoCliente; 
+            ExibirListaConsulta();
+        }
+    } 
+
+}
+void ExibirListaConsulta(){ 
+    printf("fila consulta\n");
+    if (cabecaFilaConsulta == NULL) { 
+        printf("Lista vazia\n"); 
+    } else {
+        Cliente *aux2 = cabecaFilaConsulta;
+        while (aux2 != NULL) { 
+            printf("Nome: %s\n", aux2->nome);
+            ListarAnimaisCadaCliente(aux2->nome);
+            aux2 = aux2->proximoCliente;
+        }
+    }
+}
 int main() { 
     int opcao;
     char dono[100];
@@ -276,7 +341,8 @@ int main() {
                 listarClientes();
                 printf("Qual o nome do dono?\n"); 
                 scanf("%s", dono); 
-                InserirAnimal(PegarCliente(dono)); 
+                InserirAnimal(PegarCliente(dono));
+                dono[0]='\0'; 
                 break;
             case 5: 
                 ListarAnimais(); 
@@ -287,7 +353,15 @@ int main() {
                 scanf("%s", nomeAnimal);                 
                 RemoverAnimal(nomeAnimal); 
                 break;
-           
+            case 7: 
+                listarClientes(); 
+                printf("qual cliente deseja inserir na Fila:\n"); 
+                scanf("%s", dono);
+                InserirFilaConsulta(dono);
+                break;
+            case 8: 
+                ConsumirFilaConsulta(); 
+                break;           
         }
     } while(opcao != 0);
 
