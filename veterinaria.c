@@ -47,6 +47,7 @@ void menu() {
     printf("8  - Consumir Fila Consulta\n");
     printf("9  - Exibir Clinica\n");
     printf("10 - Finalizar Consulta\n");
+    printf("11 - Exibir Lista Consulta\n");
     printf("0 - Sair\n");
 }
 
